@@ -9,6 +9,10 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" href="style.css" />
+		<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+		<script src="firebase.js"></script>
 		<script src="script.js"></script>
 	</head>
 	<body>
@@ -27,9 +31,35 @@
 					<div class="check-mark"> </div>
 				</div>
 				<div class="new-todo-input">
-					<form>
-						<input type="text" placeholder="Create a new todo..." />
+					<form onsubmit="addItem(event)">
+						<input id="todo-input" type="text" placeholder="Create a new todo..." />
 					</form>
+				</div>
+			</div>
+			<div class="todo-items-wrapper">
+				<div class="todo-items">
+					<!--Item -->
+					<div class="todo-item">
+						<div class="check">
+							<div class="check-mark">
+								<img src="assets/icon-check.svg" alt="" />
+							</div>
+						</div>
+						<div class="todo-text"></div>
+					</div>
+
+					<!--Item END-->
+				</div>
+				<div class="todo-items-info">
+					<div class="items-left"> 5 items left </div>
+					<div class="items-statuses">
+						<span class="active">All</span>
+						<span>Active</span>
+						<span>Completed</span>
+					</div>
+					<div class="items-clear">
+						<span>Clear Completed</span>
+					</div>
 				</div>
 			</div>
 		</div>
