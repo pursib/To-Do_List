@@ -8,6 +8,17 @@ function addItem(event){
     text.value="";
 }
 
+function deleteItems(){
+    db.collection("todo-items").get().then(function(querySnapshot){
+        querySnapshot.forEach(function(doc) {
+          let status = doc.data().status
+          if(status == "completed"){
+              db.collection("todo-items").doc(doc.id).delete();
+          }
+        })
+    })
+}
+
 function getItems(){
     db.collection("todo-items").onSnapshot((snapshot) => {
         console.log(snapshot)
@@ -66,4 +77,5 @@ function getItems(){
         }
     })
  }
+
 getItems()
